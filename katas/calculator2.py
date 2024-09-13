@@ -2,6 +2,7 @@ def add_string_numbers(num1, num2, num3):
     """
     Converts the given string numbers to integers and returns their sum.
     """
+    return int(num1) + int(num2) + int(num3)
 
 
 

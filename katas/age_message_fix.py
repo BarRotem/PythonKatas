@@ -6,7 +6,7 @@ def age_message(age):
     return message
 
 
-result = age_message(25)
+result = age_message(str(25))
 print(result)  # "I am 25 years old." expected
 
 """
