@@ -4,8 +4,12 @@ def log_message(message, log_type):
     """
     if log_type == "INFO":
         print(f"[INFO]: {message}")
-
-    # TODO complete the rest...
+    elif log_type == "WARNING":
+        print(f"[WARNING]: {message}")
+    elif log_type == "ERROR":
+        print(f"[ERROR]: {message}")
+    else:
+        return None
 
 
 log_message("System started", "INFO")   # Expected output: [INFO]: System started

@@ -2,6 +2,9 @@ def last_in_queue(queue):
     """
     Returns the last person in the queue.
     """
+    if len(queue) > 0:
+        return queue[-1]
+    return None
 
 
 

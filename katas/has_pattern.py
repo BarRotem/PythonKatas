@@ -2,7 +2,7 @@ def has_pattern(text):
     """
     Checks if the text contains the specific pattern "abc" at the start.
     """
-
+    return text[:3] == "abc"
 
 
 print(has_pattern("abcdef"))  # True, "abc" is at the start

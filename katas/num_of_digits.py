@@ -2,6 +2,12 @@ def num_of_digits(number):
     """
     Returns the number of digits in the given integer.
     """
+    # num_dig = 0
+    # while number != 0 :
+    #     num_dig+=1
+    #     number = number // 10
+    # return num_dig
+    return len(str(number))
 
 
 # Test cases

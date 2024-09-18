@@ -2,6 +2,18 @@ def is_earlier(date1, date2):
     """
     Compares two ISO 8601 date strings and returns True if the first date is earlier than the second date.
     """
+    split_date1 = date1.split("-")
+    split_date2 = date2.split("-")
+    for time_component_index in range(len(split_date1)):
+        if int(split_date1[time_component_index]) > int(split_date2[time_component_index]):
+            #This means date1 is later than date2
+            return False
+        elif int(split_date1[time_component_index]) < int(split_date2[time_component_index]):
+            # This component was found smaller, after checking all previous ones. return true
+            return True
+    #This statement is executed only when all components were checked and were equal.
+    #This means that the dates are similar, return False.
+    return False
 
 
 date1 = "2023-07-29"
