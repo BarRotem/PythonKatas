@@ -4,7 +4,9 @@ def list_diff(numbers):
     between the current element and its predecessor.
     The first element is left unchanged.
     """
-
+    for i in range(len(numbers)-1,0,-1):
+        numbers[i] = numbers[i] - numbers[i-1]
+    return numbers
 
 numbers = [10, 20, 15, 25, 30]
 result = list_diff(numbers)

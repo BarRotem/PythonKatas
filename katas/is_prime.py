@@ -5,7 +5,15 @@ def is_prime(number):
     other than 1 and itself.
     """
     for i in range(number):
-        ...  # TODO complete the loop body
+        if i == 0:
+            continue
+        if i == 1:
+            continue
+        if number % i == 0:
+            return False
+    if number > 1:
+        return True
+    return False
 
 
 number = 11

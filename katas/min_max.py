@@ -3,9 +3,9 @@ def find_min(numbers):
     Finds the minimum number in a list without using the built-in min() function.
     """
     min_value = numbers[0]  # assume the 1st element is the minimum
-    # for loop comes here ....
-        # update min_value in the loop body
-
+    for value in numbers:
+        if value < min_value:
+            min_value = value
     return min_value
 
 
@@ -13,6 +13,11 @@ def find_max(numbers):
     """
     Finds the maximum number in a list without using the built-in max() function.
     """
+    max_value = numbers[0]  # assume the 1st element is the minimum
+    for value in numbers:
+        if value > max_value:
+            max_value = value
+    return max_value
 
 
 

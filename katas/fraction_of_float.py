@@ -2,7 +2,7 @@ def fraction_of_float(number):
     """
     Returns the fractional part of a given float number.
     """
-
+    return str(number).replace(str(int(number)),"0",1)
 
 result = fraction_of_float(12.345)
 print(result)  # Expected output: 0.345

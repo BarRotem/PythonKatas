@@ -5,6 +5,9 @@ def start_end(text, n, m):
 
     If 'n' or 'm' are invalid (negative or larger than text length), return an empty string.
     """
+    if n < 0 or n > len(text) or m < 0 or m > len(text):
+        return ""
+    return text[:n]+text[-m:]
 
 
 text = 'Elvis has left the building'
