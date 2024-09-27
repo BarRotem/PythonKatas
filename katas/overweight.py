@@ -2,6 +2,14 @@ def check_overweight(people_weights, limit):
     """
     This function checks if any person in the given dictionary is overweight.
     """
+    {"hi":"hello","bar":"rotem"}
+    [('hi','hello'),('bar','rotem')]
+    overweight = []
+    for (key, value) in people_weights.items():
+        if value >= limit:
+            overweight.append(key)
+    return overweight
+
 
 
 people = {
@@ -13,7 +21,7 @@ people = {
 
 weight_limit = 75
 result = check_overweight(people, weight_limit)  # Expected output: ['Bob', 'Charlie']
-
+print(result)
 
 """
 To complete this exercise:

@@ -4,6 +4,11 @@ def swap_elements(lst, index1, index2):
 
     The function returns None (it modifies the list in place).
     """
+    if index1 >= len(lst) or index2 >= len(lst):
+        return None
+    value = lst[index1]
+    lst[index1] = lst[index2]
+    lst[index2] = value
 
 
 my_list = [10, 20, 30, 40, 50]

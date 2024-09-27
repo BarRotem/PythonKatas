@@ -4,6 +4,11 @@ def is_unique_str(text):
     If the string contains any repeated characters, it returns False.
     Otherwise, it returns True.
     """
+    if len(text) == 0:
+        return None
+    text_set = set(text)
+    return len(text_set) == len(text)
+
 
 
 print(is_unique_str("abcdef"))  # Expected output: True

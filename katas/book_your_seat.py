@@ -5,7 +5,15 @@ def add_passenger(seats, seat_class, passenger_name):
     Next 10 seats are for 'First' Class.
     The remaining seats are for 'Economy' Class.
     """
-
+    range_dict = {
+        'Business':range(0,10),
+        'First':range(10, 20),
+        'Economy':range(20,len(seats))
+    }
+    for i in range_dict[seat_class]:
+        if aircraft_seats[i] is None:
+            aircraft_seats[i] = passenger_name
+            return None
 
 aircraft_seats = [None] * 100   # creates list of None of length 100
 
