@@ -4,6 +4,11 @@ def secret_club(keys, values):
     - keys: A list of club member names.
     - values: A list of secret codes.
     """
+    secret_club = {}
+    if len(keys) == len(values):
+        for i in range(len(keys)):
+            secret_club[keys[i]] = values[i]
+    return secret_club
 
 
 # Example usage

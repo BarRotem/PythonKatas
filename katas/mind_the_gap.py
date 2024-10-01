@@ -2,6 +2,12 @@ def ming_the_gap(sentence):
     """
     Returns the number of spaces in the given sentence.
     """
+    count = 0
+    for char in sentence:
+        #String is iterable
+        if char == " ":
+            count+=1
+    return count
 
 
 # Example usage

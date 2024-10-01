@@ -3,7 +3,11 @@ def in_the_club(person):
     Checks if a person is eligible to enter the club.
     A person is eligible if they have either an 'id' or 'passport' key and are above 18 years old.
     """
-
+    if "id" in person or "passport" in person:
+        #Person has id or passport key in their dict
+        if person["age"] > 18:
+            return True
+    return False
 
 person_1 = {'name': 'Alice', 'age': 20, 'id': '12345'}
 person_2 = {'name': 'Bob', 'age': 17, 'passport': '98765'}

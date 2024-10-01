@@ -2,6 +2,10 @@ def is_sublist(l1, l2):
     """
     Returns True if the first list (l1) is contained the second list (l2) lexicographically.
     """
+    for l1element in l1:
+        if l1element not in l2:
+            return False
+    return True
 
 
 # Example usage
