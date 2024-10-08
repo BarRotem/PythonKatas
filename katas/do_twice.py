@@ -14,6 +14,9 @@ def do_twice(func, *args):
     """
     Applies the given function to the provided arguments and returns the result.
     """
+    call1 = func(*args)
+    call2 = func(*args)
+    return call1,call2
 
 
 # Example usage

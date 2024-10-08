@@ -3,6 +3,22 @@ def merge_sorted_lists(l1, l2):
     This function gets two sorted lists (each one of them is sorted)
     and returns a single sorted list combining both of them.
     """
+    merged_list = []
+    i = j = 0
+    while i < len(l1) and j < len(l2):
+        if l1[i] < l2[j]:
+            merged_list.append(l1[i])
+            i += 1
+        else :
+            merged_list.append(l2[j])
+            j += 1
+    if i < len(l1) :
+        merged_list += l1[i:]
+    else :
+        merged_list += l2[j:]
+    return merged_list
+
+
 
 
 

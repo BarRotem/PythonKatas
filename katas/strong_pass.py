@@ -1,12 +1,23 @@
+import re
 def strong_pass(password):
     """
     This function returns True if the given password is strong enough
     """
+    if len(password) < 6 :
+        return False
+    if not re.search(r'\d', password):
+        return False
+    if not re.search(r'[a-z]', password):
+        return False
+    if not re.search(r'[A-Z]', password):
+        return False
+    if not re.search(r'[!@#$%^&*()-+]', password):
+        return False
+    return True
 
 
 
 print(strong_pass('##$FgC7^^5a'))   # True expected
-
 
 """
 To complete this exercise:

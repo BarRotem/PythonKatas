@@ -2,7 +2,10 @@ def prime_number(num):
     """
     Check if the given number is prime or not.
     """
-
+    for i in range(2, num-1):
+        if num % i == 0 :
+            return False
+    return True
 
 
 print(prime_number(5))  # True

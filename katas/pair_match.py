@@ -1,3 +1,4 @@
+import sys
 def pair_match(men, women):
     """
     This function receives two dictionaries in the form:
@@ -9,6 +10,16 @@ def pair_match(men, women):
     The function returns a pair of names (tuple) of men and women names,
     where their absolute age differences is the minimal.
     """
+    minimal_diff = sys.maxsize
+    man_woman_pair = ()
+    for man_name, man_age in men.items():
+        for woman_name, woman_age in women.items():
+            abs_diff = abs(man_age - woman_age)
+            if abs_diff < minimal_diff:
+                minimal_diff = abs_diff
+                man_woman_pair = (man_name, woman_name)
+    return man_woman_pair
+
 
 
 
