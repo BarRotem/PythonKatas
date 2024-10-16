@@ -35,7 +35,7 @@ class Node:
         self.children = []
 
     def add_child(self, child):
-        raise NotImplementedError()
+        self.children.append(child)  # The appended child will be a TREE
 
 
 class Tree:
@@ -53,7 +53,16 @@ class Tree:
         """
         Returns a pointer to the Node object with the corresponding value
         """
-        raise NotImplementedError()
+        #self is the root of some tree.
+        if self.root.value == value:
+            return self
+        for child in self.root.children:
+            # self.root.children is a list of Tree(s) in a tree
+            parent_node = child.get_node(value)  # go deeper into the tree, look for the parent node
+            if parent_node is not None:
+                # Return parent_node only if it represents an actual tree.
+                # Python will return None for no matches found
+                return parent_node
 
     def add_node(self, value, parent):
         """
@@ -64,13 +73,27 @@ class Tree:
 
         :return: a pointer to the node object
         """
-        raise NotImplementedError()
+        # Create the child tree node
+        child_node = Tree(value)
+        # This method is based on get_node
+        parent_node = self.get_node(parent)  # Find the parent node in the tree
+        parent_node.root.add_child(child_node)
+        return child_node
 
     def height(self):
         """
         Returns the height of the tree
         """
-        raise NotImplementedError()
+        if len(self.root.children) == 0:
+            # This tree is a leaf
+            return 1
+        max_height = 1
+        for child in self.root.children:
+            # Child is a tree
+            branch_height = 1 + child.height()
+            if branch_height > max_height:
+                max_height = branch_height
+        return max_height
 
 
 class BinaryTree(Tree):
@@ -83,6 +106,8 @@ class BinaryTree(Tree):
 
     def __init__(self, root_node_value):
         super().__init__(root_node_value)
+        self.has_left = False
+        self.has_right = False
 
     def set_left_node(self, value, parent):
         """
@@ -90,10 +115,34 @@ class BinaryTree(Tree):
 
         Returns a pointer to the node
         """
-        raise NotImplementedError()
+        # Create the child tree node
+        child_node = BinaryTree(value)
+
+        # Find the parent node
+        parent_node = self.get_node(parent)
+        # Insert left_node at relevant position
+        parent_node_children = parent_node.root.children
+        if parent_node.has_left:
+            parent_node_children[0] = child_node
+        else:
+            parent_node_children.insert(0, child_node)
+            parent_node.has_left = True
+        return child_node
 
     def set_right_node(self, value, parent):
-        raise NotImplementedError()
+        # Create the child tree node
+        child_node = BinaryTree(value)
+
+        # Find the parent node
+        parent_node = self.get_node(parent)
+        # Insert left_node at relevant position
+        parent_node_children = parent_node.root.children
+        if parent_node.has_right:
+            parent_node_children[-1] = child_node
+        else:
+            parent_node_children.insert(len(parent_node_children), child_node)
+            parent_node.has_right = True
+        return child_node
 
 
 if __name__ == "__main__":
@@ -119,7 +168,7 @@ if __name__ == "__main__":
     t.add_node('C', parent='A')
     t.add_node('D', parent='A')
     t.add_node('E', parent='B')
-
+    print(t.height())
     # Create a binary tree
     #         A
     #       /   \

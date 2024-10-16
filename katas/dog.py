@@ -7,23 +7,34 @@ class Dog:
     1. In the constructor, create a new attribute called `self.position` which defines the position state of the dog.
        The attribute possible values are: sitting, standing, jumping. Default is sitting.
     2. Implement the following methods: sit(), stand(), jump(). Each method changes the position of the dog.
-    3. Extend the bark() function to receive an argument called `n` with default values of 2, the god should bark n times.
+    3. Extend the bark() function to receive an argument called `n` with default values of 2, the dog should bark n times.
     4. Add the dog position to the description printed in describe method. E.g.: `I'm John, a Puddle. I'm standing.`
 
     """
-    def __init__(self, name, breed):
+
+    def __init__(self, name, breed, position="sitting"):
         self.name = name
         self.breed = breed
+        self.position = position  # Position possible values are : sitting, standing, jumping
 
-    def bark(self):
-        print("Woof! Woof!")
+    def bark(self, n=2):
+        print("Woof! " * n)
+
+    def sit(self):
+        self.position = "sitting"
+
+    def stand(self):
+        self.position = "standing"
+
+    def jump(self):
+        self.position = "jumping"
 
     def describe(self):
-        print(f"I'm {self.name}, a {self.breed}.")
+        print(f"I'm {self.name}, a {self.breed}. I'm {self.position}")
 
 
 if __name__ == "__main__":
     my_dog = Dog("Buddy", "Golden Retriever")
 
-    my_dog.bark()
+    my_dog.bark(7)
     my_dog.describe()

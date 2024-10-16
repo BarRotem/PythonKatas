@@ -12,34 +12,42 @@ class Car:
                   Raise a RuntimeError() exception if the car is not rented
     is_rented(): Returns True if the car is currently rented, and False otherwise.
     """
+
     def __init__(self, model, year):
-        pass
+        self.model = model
+        self.year = year
+        self.rented = False
 
     def rent_car(self):
-        pass
+        if self.is_rented():
+            raise RuntimeError("You cannot rent a car that is already rented !")
+        self.rented = True
+        return "Car was rented"
 
     def return_car(self):
-        pass
+        if not self.is_rented():
+            raise RuntimeError("You cannot return a car that hasn't been rented !")
+        self.rented = False
+        return "Car was returned"
 
     def is_rented(self):
-        pass
+        return self.rented
 
 
 if __name__ == "__main__":
     my_car = Car("Toyota", 2010)
 
-    print(my_car.model)         # Toyota
-    print(my_car.year)          # 2010
-    print(my_car.is_rented())   # False
+    print(my_car.model)  # Toyota
+    print(my_car.year)  # 2010
+    print(my_car.is_rented())  # False
 
     try:
         print(my_car.return_car())
         print('car returned')
     except RuntimeError:
-        print('cat is not rented')
+        print('car is not rented')
 
     my_car.rent_car()
 
-    print(my_car.is_rented())   # True
+    print(my_car.is_rented())  # True
     print(my_car.return_car())
-

@@ -7,7 +7,7 @@ class SimpleQueue:
         """
         Initialize an empty queue.
         """
-        raise NotImplementedError()
+        self.queue = []
 
     def is_empty(self):
         """
@@ -15,7 +15,7 @@ class SimpleQueue:
 
         :return: bool: True if the queue is empty, False otherwise.
         """
-        raise NotImplementedError()
+        return self.size() == 0
 
     def enqueue(self, item):
         """
@@ -23,7 +23,7 @@ class SimpleQueue:
 
         :param item: The item to be added to the queue.
         """
-        raise NotImplementedError()
+        self.queue.insert(0,item)
 
     def dequeue(self):
         """
@@ -32,7 +32,10 @@ class SimpleQueue:
         :return: The item at the front of the queue.
         :raises RuntimeError: If the queue is empty.
         """
-        raise NotImplementedError()
+        try:
+            return self.queue.pop()
+        except IndexError:
+            raise RuntimeError("Queue is empty !")
 
     def peek(self):
         """
@@ -41,7 +44,10 @@ class SimpleQueue:
         :return: The item at the front of the queue.
         :raises RuntimeError: If the queue is empty.
         """
-        raise NotImplementedError()
+        try:
+            return self.queue[-1]
+        except IndexError:
+            raise RuntimeError
 
     def size(self):
         """
@@ -49,7 +55,7 @@ class SimpleQueue:
 
         :return: int: The number of items in the queue.
         """
-        raise NotImplementedError()
+        return len(self.queue)
 
 
 if __name__ == '__main__':
