@@ -29,7 +29,7 @@ class TestFileExceptions(unittest.TestCase):
     @patch('sys.stdout', new_callable=StringIO)
     def test_handle_file_exists_error(self, mock_stdout):
         file_exceptions(f'{BASE_PATH}/someotherfile', op='x')
-        self.assertIn("FileExistsError", mock_stdout.getvalue())
+        self.assertIn("FileExistsError", mock_stdout.getvalue())  #This change was created by Bar
 
     @patch('sys.stdout', new_callable=StringIO)
     @patch('builtins.open', side_effect=OSError("OS error - failed to access disk"))
