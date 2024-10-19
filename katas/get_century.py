@@ -2,7 +2,10 @@ def get_century(year):
     """
     Returns the century of the given year.
     """
-    return year // 100 +1
+    if year % 100 == 0:
+        # Year is the end of a century
+        return year // 100
+    return year // 100 + 1
 
 
 result = get_century(1786)

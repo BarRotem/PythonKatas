@@ -18,7 +18,8 @@ class Dog:
         self.position = position  # Position possible values are : sitting, standing, jumping
 
     def bark(self, n=2):
-        print("Woof! " * n)
+        for i in range(n):
+            print("Woof! Woof!")
 
     def sit(self):
         self.position = "sitting"
@@ -31,6 +32,7 @@ class Dog:
 
     def describe(self):
         print(f"I'm {self.name}, a {self.breed}. I'm {self.position}")
+        print()
 
 
 if __name__ == "__main__":

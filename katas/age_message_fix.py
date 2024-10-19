@@ -2,11 +2,12 @@ def age_message(age):
     """
     Returns a message that combines a string and an integer representing age.
     """
+    age = str(age)
     message = "I am " + age + " years old."
     return message
 
 
-result = age_message(str(25))
+result = age_message(25)
 print(result)  # "I am 25 years old." expected
 
 """

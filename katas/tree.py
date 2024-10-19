@@ -56,13 +56,20 @@ class Tree:
         #self is the root of some tree.
         if self.root.value == value:
             return self
-        for child in self.root.children:
-            # self.root.children is a list of Tree(s) in a tree
-            parent_node = child.get_node(value)  # go deeper into the tree, look for the parent node
+        # We are here if this tree node's value isn't the required value
+        for child_Node in self.root.children:
+            # self.root.children is a list of Node(s) in a tree.
+            # Recursively iterate on them, "casting" each Node to a Tree for function continuation.
+            child_tree = type(self)(-1)  # This Tree's initial value is irrelevant
+            child_tree.root = child_Node  # Override child_tree's root attribute, to be this current Node.
+            #if isinstance(child_tree,BinaryTree):
+
+            parent_node = child_tree.get_node(value)  # go deeper into the tree, look for the parent node
             if parent_node is not None:
-                # Return parent_node only if it represents an actual tree.
+                # Return parent_node only if it represents an actual Tree.
                 # Python will return None for no matches found
                 return parent_node
+        return None
 
     def add_node(self, value, parent):
         """
@@ -73,8 +80,8 @@ class Tree:
 
         :return: a pointer to the node object
         """
-        # Create the child tree node
-        child_node = Tree(value)
+        # Create the child Node to be inserted onto this Tree
+        child_node = Node(value)
         # This method is based on get_node
         parent_node = self.get_node(parent)  # Find the parent node in the tree
         parent_node.root.add_child(child_node)
@@ -88,9 +95,13 @@ class Tree:
             # This tree is a leaf
             return 1
         max_height = 1
-        for child in self.root.children:
-            # Child is a tree
-            branch_height = 1 + child.height()
+        for child_Node in self.root.children:
+            # self.root.children is a list of Node(s) in a tree.
+            # Recursively iterate on them, "casting" each Node to a Tree for function continuation.
+            child_tree = Tree(-1)  # This Tree's initial value is irrelevant
+            child_tree.root = child_Node  # Override child_tree's root attribute, to be this current Node.
+
+            branch_height = 1 + child_tree.height()
             if branch_height > max_height:
                 max_height = branch_height
         return max_height
@@ -103,7 +114,7 @@ class BinaryTree(Tree):
 
     You should raise an RuntimeError exception
     """
-
+    last_change_cache = ('direction','parent')
     def __init__(self, root_node_value):
         super().__init__(root_node_value)
         self.has_left = False
@@ -112,36 +123,37 @@ class BinaryTree(Tree):
     def set_left_node(self, value, parent):
         """
         Sets a new left node for a given `parent` node value.
-
         Returns a pointer to the node
         """
         # Create the child tree node
-        child_node = BinaryTree(value)
+        child_node = Node(value)
 
         # Find the parent node
         parent_node = self.get_node(parent)
         # Insert left_node at relevant position
         parent_node_children = parent_node.root.children
-        if parent_node.has_left:
+        if len(parent_node_children) > 0 and self.last_change_cache == ('left', parent):
             parent_node_children[0] = child_node
         else:
             parent_node_children.insert(0, child_node)
             parent_node.has_left = True
+            self.last_change_cache = ('left', parent)
         return child_node
 
     def set_right_node(self, value, parent):
         # Create the child tree node
-        child_node = BinaryTree(value)
+        child_node = Node(value)
 
         # Find the parent node
         parent_node = self.get_node(parent)
         # Insert left_node at relevant position
         parent_node_children = parent_node.root.children
-        if parent_node.has_right:
+        if len(parent_node_children) > 1: #and self.last_change_cache == ('right', parent):
             parent_node_children[-1] = child_node
         else:
             parent_node_children.insert(len(parent_node_children), child_node)
             parent_node.has_right = True
+            #self.last_change_cache == ('right', parent)
         return child_node
 
 

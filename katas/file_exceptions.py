@@ -11,13 +11,15 @@ def file_exceptions(file_path, op='r'):
             content_modified = content.replace(' ', '_')
             return content_modified
     except FileNotFoundError:
-        return f"FileNotFoundError : The file you're trying to open : '{file_path}' doesn't exist."
+        print(f"FileNotFoundError : The file you're trying to open : '{file_path}' doesn't exist.")
     except IsADirectoryError:
-        return f"IsADirectoryError : The file you're trying to open : '{file_path}' is a directory !"
+        print(f"IsADirectoryError : The file you're trying to open : '{file_path}' is a directory !")
     except FileExistsError:
-        return f"FileExistsError : The file you're trying to open : '{file_path}' already exists."
+        print(f"FileExistsError : The file you're trying to open : '{file_path}' already exists.")
     except PermissionError:
-        return f"PermissionError : You don't have sufficient permission to open : '{file_path}'"
+        print(f"PermissionError : You don't have sufficient permission to open : '{file_path}'")
+    except OSError:
+        print(f"OSError : Some general OS error occurred when trying to open : '{file_path}'")
 
 
 if __name__ == '__main__':
