@@ -5,7 +5,7 @@ from katas.file_exceptions import file_exceptions
 import os
 
 workdir = os.getcwd()
-BASE_PATH = '../files' if workdir.endswith('test') else 'files'
+BASE_PATH = '../files' if workdir.endswith('test') else 'katas/files'
 print(os.listdir())
 
 
