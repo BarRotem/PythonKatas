@@ -7,6 +7,7 @@ import os
 
 workdir = os.getcwd()
 BASE_PATH = '../files' if workdir.endswith('test') else 'files'
+print(workdir)
 
 
 class TestFileExceptions(unittest.TestCase):
