@@ -4,10 +4,9 @@ from unittest.mock import patch
 from katas.file_exceptions import file_exceptions
 import os
 
-
 workdir = os.getcwd()
 BASE_PATH = '../files' if workdir.endswith('test') else 'files'
-print(workdir)
+print(os.listdir())
 
 
 class TestFileExceptions(unittest.TestCase):
