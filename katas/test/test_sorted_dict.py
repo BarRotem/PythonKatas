@@ -1,5 +1,5 @@
 import unittest
-from python_katas.sorted_dict import SortedDict
+from katas.sorted_dict import SortedDict
 
 
 class TestSortedDictL2(unittest.TestCase):

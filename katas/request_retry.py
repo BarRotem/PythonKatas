@@ -15,7 +15,7 @@ def request_retry(url, retry_limit=3):
     retry_counts = 0
     response = requests.get(url)
 
-    while response.status_code >= 500 and retry_counts <= retry_limit:
+    while response.status_code >= 500 and retry_counts < retry_limit:
         # Request failed, linearly retry
         print(f"Unable to issue GET request to : {response.url}, retry count : {retry_counts}")
         time.sleep(3)
@@ -24,7 +24,8 @@ def request_retry(url, retry_limit=3):
     if response.status_code == 200:
         return f"Response status code for {response.url} is : {response.status_code}\nResponse text is : {response.text}\n"
     else:
-        return f"Status code for requested url : {response.url} is not 200 (OK). Received : {response.status_code}\n"
+        print(f"Status code for requested url : {response.url} is not 200 (OK). Received : {response.status_code}\n")
+        return ''
 
 
 if __name__ == '__main__':

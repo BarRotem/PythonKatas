@@ -1,5 +1,5 @@
 import unittest
-from python_katas.request_timeout import request_timeout
+from katas.request_timeout import request_timeout
 
 
 class TestRequestTimeoutL2(unittest.TestCase):

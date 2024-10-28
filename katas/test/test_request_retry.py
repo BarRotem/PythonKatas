@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from python_katas.request_retry import request_retry
+from katas.request_retry import request_retry
 
 
 class TestRequestRetryL2(unittest.TestCase):
