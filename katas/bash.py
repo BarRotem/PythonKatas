@@ -1,5 +1,5 @@
-
-def ping_latency(host, n=10):
+import subprocess
+def ping_latency(host, n=5):
     """
     This function takes a hostname or IP address as input,
     performs `n` ping commands, and returns the latency average.
@@ -12,7 +12,9 @@ def ping_latency(host, n=10):
     :param host: str - Hostname or IP address to ping
     :return: float - Average latency in milliseconds
     """
-    return None
+    ping = subprocess.run(["ping", host, f"-c {n}"], capture_output = True)
+    ping_avg = (str(ping.stdout).split("/")[-3])
+    return ping_avg
 
 
 if __name__ == '__main__':

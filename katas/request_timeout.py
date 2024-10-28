@@ -11,10 +11,15 @@ def request_timeout(url, timeout=5):
     :param timeout: int
     :return: Return the resulting response as text or None.
     """
-    return None
+    try:
+        response = requests.get(url,timeout = timeout)
+        return response.text
+    except requests.exceptions.ReadTimeout as read_timeout:
+        print(f"GET request to url : {url} could not be completed in time.")
+        return None
 
 
 if __name__ == '__main__':
-    print(request_timeout('google.com'))
+    print(request_timeout('https://google.com'))
     print(request_timeout('https://httpbin.org/delay/5', timeout=3))
 
